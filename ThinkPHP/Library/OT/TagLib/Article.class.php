@@ -27,19 +27,27 @@ class Article extends TagLib{
     );
 
     public function _list($tag, $content){
+        //参数设置，name和category为必填项。
         $name   = $tag['name'];
         $cate   = $tag['category'];
+
+        //为『选填』的项增加默认值。
         $child  = empty($tag['child']) ? 'false' : $tag['child'];
         $row    = empty($tag['row'])   ? '10' : $tag['row'];
         $field  = empty($tag['field']) ? 'true' : $tag['field'];
 
+        //拼接php字符串，最终执行时，将以下字符串，直接解析为PHP语句进行解析。
         $parse  = '<?php ';
         $parse .= '$__CATE__ = D(\'Category\')->getChildrenId('.$cate.');';
         $parse .= '$__LIST__ = D(\'Document\')->page(!empty($_GET["p"])?$_GET["p"]:1,'.$row.')->lists(';
         $parse .= '$__CATE__, \'`level` DESC,`id` DESC\', 1,';
         $parse .= $field . ');';
         $parse .= ' ?>';
+
+        //由于需要循环输出，所以使用volist。当然了，我们看到，在标签库中，也是可以使用其它标签库的。
         $parse .= '<volist name="__LIST__" id="'. $name .'">';
+
+        //$content 即是我们的模板中的html代码，所以涉及到替换的，都需要拼接$content.
         $parse .= $content;
         $parse .= '</volist>';
         return $parse;

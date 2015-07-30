@@ -22,7 +22,8 @@ class CategoryWidget extends Controller{
 		$field = 'id,name,pid,title,link_id';
 		if($child){
 			$category = D('Category')->getTree($cate, $field);
-			$category = $category['_'];
+			dump($category);
+			$category = $category["_"];
 		} else {
 			$category = D('Category')->getSameLevel($cate, $field);
 		}

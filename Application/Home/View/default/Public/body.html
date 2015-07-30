@@ -5,7 +5,8 @@
         <!-- 左侧 nav
         ================================================== -->
             <div class="span3 bs-docs-sidebar">
-                <block name="publish"></block>
+                <block name="publish">
+                </block>
                 <ul class="nav nav-list bs-docs-sidenav">
                     {:W('Category/lists', array($category['id'], ACTION_NAME == 'index'))}
                 </ul>
