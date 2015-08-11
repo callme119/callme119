@@ -6,6 +6,8 @@
 Runtime/*
 nbproject/*
 nbproject/
+*.sublime-project
+*.sublime-workspace
 ~
 ~
 
