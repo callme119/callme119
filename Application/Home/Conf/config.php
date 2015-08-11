@@ -16,6 +16,8 @@ return array(
     // 预先加载的标签库
     'TAGLIB_PRE_LOAD'     =>    'OT\\TagLib\\Article,OT\\TagLib\\Think',
         
+    //URL模式设置
+    'URL_MODEL'             => 2,
     /* 主题设置 */
     'DEFAULT_THEME' =>  'default',  // 默认模板主题名称
 
